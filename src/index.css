@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+* {
+  font-family:outfit;
+}
+
+
+
+/* *************** App Download Section *************** */
+
+.gradient-box {
+  position: relative;
+  background: linear-gradient(to right, #f5f3ff, #fdf4ff); /* Tailwind: from-violet-50 to-purple-50 */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+}
+
+/* Responsive padding (p-12, sm:p-24, lg:p-32) */
+.gradient-box {
+  padding: 3rem; /* base (p-12) */
+}
+
+@media (min-width: 576px) {
+  .gradient-box {
+    padding: 6rem; /* sm:p-24 */
+  }
+}
+
+@media (min-width: 992px) {
+  .gradient-box {
+    padding: 8rem; /* lg:p-32 */
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* *************** ApplyJob.jsx *************** */
+.custom-spinner {
+  width: 80px;
+  height: 80px;
+  border: 4px solid #e5e7eb; /* gray-300 */
+  border-top: 4px solid #60a5fa; /* blue-400 */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.rich-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #575656;
+}
+
+.rich-text h2,
+.rich-text h2 strong {
+  font-size: 1.5rem; /* Bootstrap fs-3 equivalent */
+  font-weight: 700;  /* fw-bold */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.rich-text p {
+  margin-bottom: 1.2rem;
+}
+
+.rich-text ol {
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* *************** Applications.jsx *************** */
+
+.outer-bordered-table {
+  border: 1px solid #dee2e6; /* or any color you prefer */
+  border-radius: 0.375rem; /* same as .rounded in Bootstrap */
+}
+
+.outer-bordered-table td,
+.outer-bordered-table th {
+  border: none; /* remove inner cell borders */
+}
+
+/* Status color */
+.bg-soft-green {
+  background-color: #34d399; /* soft mint green */
+}
+
+.bg-soft-red {
+  background-color: #f87171; /* soft pink/red */
+}
+
+.bg-soft-blue {
+  background-color: #60a5fa; /* soft blue */
+}
+
+
+/* *************** Recruiter Login *************** */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+  
+}
+
+/* *************** Dashboard.jsx *************** */
+@media (min-width: 992px) {
+  .sidebar {
+    width: 220px !important;
+  }
+
+  .main-content {
+    margin-left: 220px !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 70px !important;
+  }
+
+  .main-content {
+    margin-left: 70px !important;
+  }
+}
+
+
+/* *************** UserLogin.jsx & RecruiterLogin.jsx (useEffect)*************** */
+body.modal-open {
+  pointer-events: none;
+}
+.modal-active {
+  pointer-events: auto;
+}
+
+
+/* *************** UserProfileDropdown.jsx *************** */
+.translate-x-100 {
+  transform: translateX(100%);
+}
+
+.translate-x-0 {
+  transform: translateX(0%);
+}
+
+.transition {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* *************** ProfileHeader.jsx Scrolling *************** */
+
+.scrollable-modal .modal-content {
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body-scroll {
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 15px;
+}
+
+
+
+

@@ -1,0 +1,96 @@
+.job-section {
+  background: #00c4e6;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 20px;
+  margin: 40px auto; /* auto horizontally centers the element */
+  max-width: 1200px; /* adjust width as needed */
+  width: 90%; /* responsive: takes 90% of the parent width */
+}
+
+  
+  .job-section h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  .job-section p {
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  
+  .search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .search-box input {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .search-box button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ffffff;
+    color: #77777d;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .trusted-by {
+    background: #ffffff;
+    margin: 20px auto;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 1200px;
+    width: 90%;
+  }
+  
+  .trusted-by h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+  }
+  
+  .logo-container img {
+    max-height: 40px;
+    object-fit: contain;
+  }
+  
+  @media (min-width: 600px) {
+    .search-box {
+      flex-direction: row;
+    }
+  
+    .search-box input {
+      flex: 1;
+    }
+  
+    .search-box button {
+      width: auto;
+    }
+  }
+  
