@@ -1,0 +1,19 @@
+.custom-input {
+  border: 1px solid #ccf6fb !important;
+  box-shadow: none !important;
+  border-radius: 0.375rem;
+}
+
+.custom-input:focus {
+  border-color: #ccf6fb !important;
+  box-shadow: 0 0 0 2px #ccf6fb !important;
+}
+
+.custom-input:hover {
+  border-color: #86b7fe !important;
+}
+
+.custom-input.is-invalid {
+  border-color: red !important;
+  box-shadow: none !important;
+}
