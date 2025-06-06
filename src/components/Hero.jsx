@@ -39,7 +39,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <section className="trusted-by">
+      {/* <section className="trusted-by">
         <h3>Trusted by</h3>
         <div className="logo-container">
           <img src={assets.microsoft_logo} alt="Microsoft" />
@@ -49,7 +49,7 @@ const Hero = () => {
           <img src={assets.amazon_logo} alt="Amazon" />
           <img src={assets.adobe_logo} alt="Adobe" />
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

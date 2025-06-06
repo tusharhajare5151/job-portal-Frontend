@@ -160,6 +160,7 @@ body.modal-open {
 
 /* *************** ProfileHeader.jsx Scrolling *************** */
 
+
 .scrollable-modal .modal-content {
   max-height: 90vh;
   display: flex;
@@ -171,6 +172,22 @@ body.modal-open {
   max-height: 60vh;
   padding-right: 15px;
 }
+
+.scrollable-modal .modal-body-scroll {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Override Bootstrap checkbox when checked */
+.custom-checkbox input[type="checkbox"]:checked,
+.custom-radio input[type="radio"]:checked {
+  background-color: #00c4e6;
+  border-color: #00c4e6;
+  box-shadow: 0 0 0 0.2rem rgba(0, 196, 230, 0.25);
+}
+
+
+
 
 
 

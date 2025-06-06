@@ -5,6 +5,8 @@ import QuickLinksSidebar from '../components/Profile/QuickLinksSidebar';
 import CareerPreferences from '../components/Profile/CareerPreferences';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import EducationDetails from '../components/Profile/EducationDetails/EducationDetails';
+
 
 function ProfilePage() {
   const headerRef = useRef(null);
@@ -136,17 +138,19 @@ function ProfilePage() {
         {/* Main Layout */}
         <div className="row" style={{ marginTop: '1rem' }}>
           {/* Left Sidebar */}
-          <div
-            className="col-md-2"
+          {/* <div
+            className="col-md-2 col-12 mb-3"
             style={{
-              position: 'sticky',
+              position: window.innerWidth >= 768 ? 'sticky' : 'static',
               top: '100px',
               height: 'fit-content',
             }}
           >
             
             <QuickLinksSidebar />
-          </div>
+          </div> */}
+
+          <QuickLinksSidebar />
 
           {/* Right Scrollable Section */}
           <div
@@ -159,7 +163,7 @@ function ProfilePage() {
             }}
           >
             <CareerPreferences />
-            <CareerPreferences />
+            <EducationDetails />
             <CareerPreferences />
             <CareerPreferences />
             <CareerPreferences />

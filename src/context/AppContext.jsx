@@ -26,6 +26,7 @@ export const AppContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
 
 
+
   const fetchJobs = async () => {
     try {
         const token = localStorage.getItem('token'); // Or sessionStorage depending on your implementation

@@ -13,6 +13,7 @@ const ProfileHeader = () => {
   const [user, setUser] = useState({});
   const [formData, setFormData] = useState({ ...user });
   const [errors, setErrors] = useState({});
+  
 
   // Refs for form fields
   const nameRef = useRef(null);
@@ -145,8 +146,8 @@ const ProfileHeader = () => {
           <div className="col-md-10">
             <div className="d-flex justify-content-between align-items-center flex-wrap">
               <h4 className="mb-1">{user.name}</h4>
-              <BsPencil
-                className="text-primary fs-5"
+              <i
+                className="bi bi-pencil "
                 role="button"
                 onClick={() => {
                   setFormData({ ...user });
@@ -179,7 +180,6 @@ const ProfileHeader = () => {
                 <FaBirthdayCake className="me-2" />
                 {user.dob}
               </div>
-
             </div>
           </div>
         </div>
