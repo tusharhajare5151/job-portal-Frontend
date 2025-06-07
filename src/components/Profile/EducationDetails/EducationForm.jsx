@@ -212,12 +212,14 @@ const EducationForm = ({ show, onClose, onSave, initialData = {} }) => {
 
           <Form.Group className="mb-3">
             <Form.Label>University/Institute</Form.Label>
-            <Creatable
-              isClearable
-              menuIsOpen={false}
-              components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
-              styles={customSelectStyles(errors, 'institute')}
-              placeholder="Enter university/institute"
+            <Form.Control
+              type="text"
+              name="university"
+              value={formData.university}
+              onChange={handleChange}
+              placeholder="Enter University/Institute"
+              isInvalid={!!errors.university}
+              className="custom-input"
             />
           </Form.Group>
 
@@ -261,15 +263,16 @@ const EducationForm = ({ show, onClose, onSave, initialData = {} }) => {
 
           <Form.Group className="mb-3">
             <Form.Label>Specialization</Form.Label>
-            <Creatable
-              isClearable
-              menuIsOpen={false}
-              components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
-              styles={customSelectStyles(errors, 'specialization')}
+            <Form.Control
+              type="text"
+              name="specialization"
+              value={formData.specialization}
+              onChange={handleChange}
               placeholder="Enter specialization"
+              isInvalid={!!errors.specialization}
+              className="custom-input"
             />
           </Form.Group>
-
 
           <Row className="mb-3">
             <Col md={6}>
@@ -363,14 +366,14 @@ const EducationForm = ({ show, onClose, onSave, initialData = {} }) => {
           {showOtherMarksField && (
             <Form.Group className="mb-3" ref={marksRef}>
               <Form.Label>Marks</Form.Label>
-              <Creatable
-                isClearable
-                menuIsOpen={false}
-                inputValue={showMarksField}
-                onInputChange={setShowMarksField}
-                components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
-                styles={customSelectStyles(errors, 'marks')}
+              <Form.Control
+                type="text"
+                name="marks"
+                value={showMarksField}
+                onChange={(e) => setShowMarksField(e.target.value)}
                 placeholder="Enter marks/grade"
+                isInvalid={!!errors?.marks}
+                className="custom-input"
               />
             </Form.Group>
           )}

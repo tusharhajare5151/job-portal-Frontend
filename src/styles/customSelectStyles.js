@@ -27,6 +27,13 @@ const customSelectStyles = (errors = {}, fieldName = '') => ({
     },
   }),
 
+  placeholder: (base) => ({
+  ...base,
+  color: '#7c7c7c ', 
+  
+}),
+
+
   option: (base, state) => ({
     ...base,
     paddingTop: 4,

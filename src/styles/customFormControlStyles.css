@@ -4,6 +4,12 @@
   border-radius: 0.375rem;
 }
 
+
+input.form-control.custom-input::placeholder {
+  color: #7c7c7c !important;
+  opacity: 1 !important;
+}
+
 .custom-input:focus {
   border-color: #ccf6fb !important;
   box-shadow: 0 0 0 2px #ccf6fb !important;
@@ -14,6 +20,7 @@
 }
 
 .custom-input.is-invalid {
-  border-color: red !important;
+  border-color: #7c7c7c !important;
   box-shadow: none !important;
+  background-image: none !important;
 }

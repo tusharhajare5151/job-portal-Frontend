@@ -206,7 +206,7 @@ const ClassXIIXForm = ({ show, onClose, onSave, initialData = {} }) => {
               onInputChange={handleInputChange}
               menuPlacement="bottom"
               menuShouldScrollIntoView={false}
-              
+
               styles={customSelectStyles(errors, 'passingYear')}
               className={errors.passingYear ? 'is-invalid' : ''}
             />
@@ -219,7 +219,7 @@ const ClassXIIXForm = ({ show, onClose, onSave, initialData = {} }) => {
               placeholder="Select medium"
               isClearable
               components={{ ClearIndicator: () => null, IndicatorSeparator: () => null }}
-              options={mediumOptions} 
+              options={mediumOptions}
               value={
                 mediumOptions.find(option => option.value === formData.medium) || null
               }
@@ -234,12 +234,13 @@ const ClassXIIXForm = ({ show, onClose, onSave, initialData = {} }) => {
 
           <Form.Group className="mb-3">
             <Form.Label>Marks (%)</Form.Label>
-            <Creatable
-              isClearable
-              menuIsOpen={false}
-              components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
-              styles={customSelectStyles(errors, 'marks')}
-              placeholder="Marks"
+            <Form.Control
+              type="text"
+              name="marks"
+              onChange={handleChange}
+              placeholder="Enter Marks"
+              isInvalid={!!errors.marks}
+              className="custom-input"
             />
           </Form.Group>
 
