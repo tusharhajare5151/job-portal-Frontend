@@ -24,7 +24,7 @@ const EducationForm = ({ show, onClose, onSave, initialData = {} }) => {
     e.preventDefault();
     const newErrors = {};
 
-    const requiredFields = ['education', 'institute', 'course', 'otherCourse', 'specialization', 'courseType', 'startYear', 'endYear', 'grading', 'marks'];
+    const requiredFields = ['education', 'institute', 'course', 'otherCourse', 'specialization','university', 'courseType', 'startYear', 'endYear', 'grading', 'marks'];
     requiredFields.forEach(field => {
       if (!formData[field]) {
         newErrors[field] = 'Required';
