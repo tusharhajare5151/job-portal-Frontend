@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import EducationDetails from '../components/Profile/EducationDetails/EducationDetails';
 import Projects from '../components/Profile/Projects.jsx';
+import ProfileSummary from '../components/Profile/ProfileSummary.jsx';
 
 
 
@@ -169,7 +170,7 @@ function ProfilePage() {
             <EducationDetails />
             <KeyKills />
             <Projects />
-            <CareerPreferences />
+            <ProfileSummary />
             <CareerPreferences />
             <CareerPreferences />
             <CareerPreferences />
