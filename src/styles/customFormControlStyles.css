@@ -20,7 +20,7 @@ input.form-control.custom-input::placeholder {
 }
 
 .custom-input.is-invalid {
-  border-color: #7c7c7c !important;
+  border-color: red !important;
   box-shadow: none !important;
   background-image: none !important;
 }
