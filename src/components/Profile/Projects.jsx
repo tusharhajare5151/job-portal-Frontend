@@ -23,6 +23,19 @@ const Projects = ({ show, onClose, onSave }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Add validation here if needed
+        const newErrors = {};
+
+        const requiredFields = ['tag', 'title', 'client', 'status', 'selectyear', 'selectmonth','selectyear2','selectmonth2','project_details'];
+        requiredFields.forEach(field => {
+            if (!formData[field]) {
+                newErrors[field] = 'Required';
+            }
+        });
+
+        setErrors(newErrors);
+        if (Object.keys(newErrors).length > 0) return;
+
+
         onSave(formData);
         setShowForm(false);
     };
@@ -59,7 +72,7 @@ const Projects = ({ show, onClose, onSave }) => {
                 <Modal.Body className="modal-body-scroll">
                     <Form id="projectForm" onSubmit={handleSubmit}>
                         <Form.Group className="mb-3">
-                            <Form.Label>Project Title<span className="text-danger">*</span></Form.Label>
+                            <Form.Label>Project Title</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
@@ -67,23 +80,25 @@ const Projects = ({ show, onClose, onSave }) => {
                                 value={formData.title || ''}
                                 onChange={handleChange}
                                 className="custom-input"
+                                isInvalid={!!errors.title}
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Tag this project with your employment/education</Form.Label>
                             <Select
+                            name='tag'
                                 options={[{ value: 'college', label: 'College' }, { value: 'internship', label: 'Internship' }]}
                                 placeholder="Select employment/education"
                                 onChange={(selected) => handleSelectChange('tag', selected)}
                                 isClearable
                                 components={{ IndicatorSeparator: () => null, ClearIndicator: () => null }}
-                                styles={customSelectStyles(errors, 'grading')}
+                                styles={customSelectStyles(errors, 'tag')}
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Client<span className="text-danger">*</span></Form.Label>
+                            <Form.Label>Client</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="client"
@@ -91,6 +106,7 @@ const Projects = ({ show, onClose, onSave }) => {
                                 value={formData.client || ''}
                                 onChange={handleChange}
                                 className="custom-input"
+                                isInvalid={!!errors.client}
                             />
                         </Form.Group>
 
@@ -102,12 +118,14 @@ const Projects = ({ show, onClose, onSave }) => {
                                     inline label="In Progress" name="status" type="radio"
                                     value="inprogress" checked={formData.status === 'inprogress'}
                                     onChange={handleChange}
+                                    isInvalid={!!errors.status}
                                 />
                                 <Form.Check
                                     className="custom-radio"
                                     inline label="Finished" name="status" type="radio"
                                     value="finished" checked={formData.status === 'finished'}
                                     onChange={handleChange}
+                                    isInvalid={!!errors.status}
                                 />
                             </div>
                         </Form.Group>
@@ -116,25 +134,33 @@ const Projects = ({ show, onClose, onSave }) => {
                             <Col>
                                 <Form.Label>Worked from</Form.Label>
                                 <Select
+                                    name='selectyear'
                                     placeholder="Select year"
-                                    options={Array.from({ length: 30 }, (_, i) => {
+                                    options={Array.from({ length: 50 }, (_, i) => {
                                         const year = new Date().getFullYear() - i;
                                         return { value: year, label: year };
                                     })}
                                     onChange={(selected) => handleSelectChange('workedFromYear', selected)}
+                                    styles={customSelectStyles(errors, 'selectyear')}
+                                    menuPosition="fixed"
                                     isClearable
+                                    components={{ IndicatorSeparator: () => null, ClearIndicator: () => null }}
                                 />
                             </Col>
                             <Col>
                                 <Form.Label>&nbsp;</Form.Label>
                                 <Select
+                                    name='selectmonth'
                                     placeholder="Select month"
                                     options={[
                                         'January', 'February', 'March', 'April', 'May', 'June',
                                         'July', 'August', 'September', 'October', 'November', 'December'
                                     ].map(month => ({ value: month, label: month }))}
                                     onChange={(selected) => handleSelectChange('workedFromMonth', selected)}
+                                    styles={customSelectStyles(errors, 'selectmonth')}
+                                    menuPosition="fixed"
                                     isClearable
+                                    components={{ IndicatorSeparator: () => null, ClearIndicator: () => null }}
                                 />
                             </Col>
                         </Row>
@@ -142,27 +168,35 @@ const Projects = ({ show, onClose, onSave }) => {
                         {formData.status === 'finished' && (
                             <Row className="mb-3">
                                 <Col>
-                                    <Form.Label>Worked till<span className="text-danger">*</span></Form.Label>
+                                    <Form.Label>Worked till</Form.Label>
                                     <Select
+                                        name='selectyear2'
                                         placeholder="Select year"
-                                        options={Array.from({ length: 30 }, (_, i) => {
+                                        options={Array.from({ length: 50 }, (_, i) => {
                                             const year = new Date().getFullYear() - i;
                                             return { value: year, label: year };
                                         })}
                                         onChange={(selected) => handleSelectChange('workedTillYear', selected)}
+                                        styles={customSelectStyles(errors, 'selectyear2')}
+                                        menuPosition="fixed"
                                         isClearable
+                                        components={{ IndicatorSeparator: () => null, ClearIndicator: () => null }}
                                     />
                                 </Col>
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
                                     <Select
+                                        name='selectmonth2'
                                         placeholder="Select month"
                                         options={[
                                             'January', 'February', 'March', 'April', 'May', 'June',
                                             'July', 'August', 'September', 'October', 'November', 'December'
                                         ].map(month => ({ value: month, label: month }))}
                                         onChange={(selected) => handleSelectChange('workedTillMonth', selected)}
+                                        styles={customSelectStyles(errors, 'selectmonth2')}
+                                        menuPosition="fixed"
                                         isClearable
+                                        components={{ IndicatorSeparator: () => null, ClearIndicator: () => null }}
                                     />
                                 </Col>
                             </Row>
@@ -170,16 +204,17 @@ const Projects = ({ show, onClose, onSave }) => {
 
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Details of project<span className="text-danger">*</span></Form.Label>
+                            <Form.Label>Details of project</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={3}
-                                name="details"
+                                name="project_details"
                                 placeholder="Type here..."
                                 value={formData.details || ''}
                                 onChange={handleChange}
                                 maxLength={1000}
                                 className="custom-input"
+                                isInvalid={!!errors.project_details}
                             />
                             <div className="text-end text-muted small">
                                 {1500 - (formData.details?.length || 0)} character(s) left
@@ -215,11 +250,13 @@ const Projects = ({ show, onClose, onSave }) => {
                                             inline label="Offsite" name="site" type="radio"
                                             value="offsite" checked={formData.site === 'offsite'}
                                             onChange={handleChange}
+                                            className="custom-radio"
                                         />
                                         <Form.Check
                                             inline label="Onsite" name="site" type="radio"
                                             value="onsite" checked={formData.site === 'onsite'}
                                             onChange={handleChange}
+                                            className="custom-radio"
                                         />
                                     </div>
                                 </Form.Group>
@@ -233,6 +270,7 @@ const Projects = ({ show, onClose, onSave }) => {
                                                 key={type} value={type.toLowerCase()}
                                                 checked={formData.employment === type.toLowerCase()}
                                                 onChange={handleChange}
+                                                className="custom-radio"
                                             />
                                         ))}
                                     </div>
@@ -240,23 +278,28 @@ const Projects = ({ show, onClose, onSave }) => {
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Team Size</Form.Label>
-                                    <Select
-                                        options={[1, 2, 3, 5, 10, 20, 50].map(n => ({ value: n, label: `${n} members` }))}
-                                        placeholder="Select team size"
-                                        onChange={(selected) => handleSelectChange('teamSize', selected)}
-                                        isClearable
+                                    <Form.Control
+                                        type="text"
+                                        name="teamSize"
+                                        placeholder="Enter team size"
+                                        value={formData.teamSize || ''}
+                                        onChange={handleChange}
+                                        className="custom-input"
                                     />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Role</Form.Label>
-                                    <Select
-                                        options={[{ value: 'developer', label: 'Developer' }, { value: 'lead', label: 'Team Lead' }]}
-                                        placeholder="Select role"
-                                        onChange={(selected) => handleSelectChange('role', selected)}
-                                        isClearable
+                                    <Form.Control
+                                        type="text"
+                                        name="role"
+                                        placeholder="Enter your role"
+                                        value={formData.role || ''}
+                                        onChange={handleChange}
+                                        className="custom-input"
                                     />
                                 </Form.Group>
+
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Role Description</Form.Label>
@@ -270,6 +313,9 @@ const Projects = ({ show, onClose, onSave }) => {
                                         maxLength={250}
                                         className="custom-input"
                                     />
+                                    <div className="text-end text-muted small">
+                                        {250 - (formData.roleDescription?.length || 0)} character(s) left
+                                    </div>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
