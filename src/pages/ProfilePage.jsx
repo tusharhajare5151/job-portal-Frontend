@@ -3,9 +3,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import ProfileHeader from '../components/Profile/ProfileHeader';
 import QuickLinksSidebar from '../components/Profile/QuickLinksSidebar';
 import CareerPreferences from '../components/Profile/CareerPreferences';
+import KeyKills from '../components/Profile/KeyKills';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import EducationDetails from '../components/Profile/EducationDetails/EducationDetails';
+import Projects from '../components/Profile/Projects.jsx';
+
 
 
 function ProfilePage() {
@@ -164,8 +167,8 @@ function ProfilePage() {
           >
             <CareerPreferences />
             <EducationDetails />
-            <CareerPreferences />
-            <CareerPreferences />
+            <KeyKills />
+            <Projects />
             <CareerPreferences />
             <CareerPreferences />
             <CareerPreferences />

@@ -14,7 +14,7 @@ const QuickLinksSidebar = () => {
   }, [])
 
 
-  const sections = ["Preference", "Education", "Key skills", "Languages", "Internships", "Projects", "Profile summary", "Accomplishments", "Employment", "Academic achievements", "Resume"];
+  const sections = ["Preference", "Education", "Key skills", "Projects", "Profile summary", "Accomplishments", "Employment", "Academic achievements", "Resume"];
 
   return (
 
