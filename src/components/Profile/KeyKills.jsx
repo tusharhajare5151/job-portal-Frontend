@@ -82,7 +82,7 @@ const KeySkills = () => {
 
     return (
         <>
-            <div className="card shadow-sm p-3 mb-3">
+            <div className="card shadow-sm rounded-4 p-4 mb-3">
                 <div className="d-flex justify-content-between align-items-center mb-2">
                     <h5 className="mb-0">Key Skills</h5>
                     <i className="bi bi-pencil" role="button" onClick={handleShow}></i>

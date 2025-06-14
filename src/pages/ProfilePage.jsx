@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar';
 import EducationDetails from '../components/Profile/EducationDetails/EducationDetails';
 import Projects from '../components/Profile/Projects.jsx';
 import ProfileSummary from '../components/Profile/ProfileSummary.jsx';
+import ResumeUpload from '../components/Profile/ResumeUpload.jsx';
 
 
 
@@ -166,14 +167,16 @@ function ProfilePage() {
               transition: 'all 0.3s ease',
             }}
           >
+            <ResumeUpload />
             <CareerPreferences />
             <EducationDetails />
             <KeyKills />
             <Projects />
             <ProfileSummary />
+            
+            {/* <CareerPreferences />
             <CareerPreferences />
-            <CareerPreferences />
-            <CareerPreferences />
+            <CareerPreferences /> */}
           </div>
         </div>
       </div>

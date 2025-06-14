@@ -14,7 +14,7 @@ const QuickLinksSidebar = () => {
   }, [])
 
 
-  const sections = ["Preference", "Education", "Key skills", "Projects", "Profile summary", "Accomplishments", "Employment", "Academic achievements", "Resume"];
+  const sections = ["Resume", "Preference", "Education", "Key skills", "Projects", "Profile summary", "Accomplishments", "Employment", "Academic achievements"];
 
   return (
 
@@ -27,7 +27,7 @@ const QuickLinksSidebar = () => {
       }}
     >
 
-      <div className="card shadow-sm p-3 mb-3">
+      <div className="card shadow-sm rounded-4 p-4 mb-3">
         <h5 className="mb-3">Quick links</h5>
         <ul className="list-unstyled">
           {sections.map((section, index) => (

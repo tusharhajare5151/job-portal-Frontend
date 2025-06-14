@@ -95,7 +95,7 @@ const ProfileHeader = () => {
 
   return (
     <>
-      <div className="container bg-white shadow-sm rounded p-4 mb-4">
+      <div className="container bg-white shadow-sm rounded-4 p-4 mb-4">
         <div className="row align-items-center">
           {/* Profile Image and Completion */}
           <div className="col-md-2 text-center mb-3 mb-md-0">
