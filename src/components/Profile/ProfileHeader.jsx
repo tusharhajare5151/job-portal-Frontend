@@ -17,6 +17,9 @@ const ProfileHeader = () => {
   const [user, setUser] = useState({});
   const [formData, setFormData] = useState({ ...user });
   const [errors, setErrors] = useState({});
+  const fileInputRef = useRef(null);
+  const [uploading, setUploading] = useState(false);
+
 
 
   // Refs for form fields
@@ -77,6 +80,46 @@ const ProfileHeader = () => {
       });
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("profileImage", file);
+
+    setUploading(true); // start uploading indicator
+
+    axios.post('http://localhost:8080/api/profile/upload-image', formData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then((res) => {
+        console.log("Image uploaded successfully:", res.data);
+        return axios.get('http://localhost:8080/api/profile/user_id', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+      })
+      .then((res) => {
+        setUser(res.data);
+        setFormData(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to upload image", err);
+      })
+      .finally(() => {
+        // Simulate 2.5 second delay
+        setTimeout(() => {
+          setUploading(false); // stop spinner after 2 sec
+        }, 2000);
+      });
+  };
+
+
+
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/profile/user_id', {
@@ -101,16 +144,40 @@ const ProfileHeader = () => {
           <div className="col-md-2 text-center mb-3 mb-md-0">
             <div className="position-relative d-inline-block">
               <img
-                src={assets.upload_area}
+                src={user.profileImage ? `http://localhost:8080/images/${user.profileImage}` : assets.upload_area}
                 alt="Profile"
                 className="rounded-circle border border-3"
                 width="100"
                 height="100"
+                role="button"
+                onClick={() => fileInputRef.current.click()}  // trigger file input on click
               />
               <span className="position-absolute bottom-0 start-50 translate-middle badge bg-success">
                 {user.profileCompletion}%
               </span>
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleImageUpload}
+                style={{ display: 'none' }}  // hide the actual input
+              />
+              {uploading && (
+                <div
+                  className="position-absolute top-50 start-50 translate-middle bg-white rounded-circle d-flex align-items-center justify-content-center"
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    opacity: 0.7
+                  }}
+                >
+                  <div className="spinner-border text-primary" role="status" style={{ width: '2rem', height: '2rem' }}>
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              )}
             </div>
+
           </div>
 
           {/* Profile Details */}
